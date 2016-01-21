@@ -8,37 +8,34 @@
     service.$inject = ['$http'];
 
     var id = 1;
+    var todoListArray = [];
+    var todos = [];
     function service($http) {
         return {
-            toDoLists: [],
-            addList: add,
+            todoLists: todoListArray,
+            addList: add
         };
 
         function add(name) {
-            if (isDuplicatedList()) {
+            if (isDuplicatedList(name)) {
                 alert('The list already exists!')
             } else {
-            toDoLists.push(name); {
-                {id: id, 
-                name: name, 
-                todos: []};
-                alert('The list has been created successfully')
+                var todo = {
+                    id: id, 
+                    name: name, 
+                    todos: todos
+                };
+
+                todoListArray.push(todo);
+                    alert('The list has been created successfully')
+                    id++;
+                }
             }
-        }
-            id++;
-        }
 
         function isDuplicatedList(name) {
-            for (var i = 0; i < toDoLists.length; i++) {
-                var isDuplicated = false;
-
-                if (toDoLists[i].name == name) {
-                    isDuplicated = true;
-                    break;
-                }
-                return isDuplicated;
+            return _.some(todoListArray, function(todo) { 
+                        return todo.name == name; 
+                    });
             }
-        }
     }
-
 }(angular));

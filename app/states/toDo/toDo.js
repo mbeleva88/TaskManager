@@ -3,21 +3,21 @@
 
     angular
         .module('app')
-        .directive('toDo', toDo)
+        .directive('todo', todo)
         .config(config);
 
     config.$inject = ['$stateProvider'];
     function config($stateProvider) {
         $stateProvider
-            .state('toDo', {
+            .state('todo', {
                 url: '/todo',
-                template: '<to-do></to-do>'
+                template: '<todo></todo>'
             });
     }
 
-    function toDo() {
+    function todo() {
         var directive = {
-            templateUrl: './states/toDo/toDo.html',
+            templateUrl: './states/todo/todo.html',
             restrict: 'E',
             controller: controller,
             scope: {
@@ -30,10 +30,12 @@
 
     controller.$inject = ['$scope', 'todos'];
     function controller($scope, todos) {
+        $scope.vm = {};
         $scope.todos = todos;
+        $scope.addNewTodo = addNewTodo;
 
-        function todos() {
-            alert('Todos!');
+        function addNewTodo() {
+            return todos.addList($scope.vm.name);
         }
     }
 
