@@ -2,15 +2,15 @@
 
 ## Sprint 1
 ### Create app component
-- create files and siple html - 1h
-- styling - 2h
+- create files and siple html - 1h //1h
+- styling - 2h //1h
 - add todo list action, show dialog box - 4h
 - add todo list action, show input (name), OK and Cancel buttons - 1h
-- add todo list action, create todos service {lists: [], addList: function (name), isDuplicateList: function(name)} {id, name, todos:[]} (use lodash) - 4h
-- add todo list action, check te name for duplication, create new todo list - 1h
+- add todo list action, create todos service {lists: [], addList: function (name), isDuplicateList: function(name)} {id, name, todos:[]} (use lodash) - 4h // 2h
+- add todo list action, check te name for duplication, create new todo list - 1h //1h
 
 ## Backlog
-### Setup enviroment - 0h
+### Setup enviroment - 0h //2h
 
 ### Create todo list component
 - header (+ syling) - 2h

@@ -3,25 +3,25 @@
 
     angular
         .module('app')
-        .directive('todo', todo)
+        .directive('todoApp', todoApp)
         .config(config);
 
     config.$inject = ['$stateProvider'];
     function config($stateProvider) {
         $stateProvider
-            .state('todo', {
-                url: '/todo',
-                template: '<todo></todo>'
+            .state('todoApp', {
+                url: '/todo-app',
+                template: '<todo-app></todo-app>'
             });
     }
 
-    function todo() {
+    function todoApp() {
         var directive = {
-            templateUrl: './states/todo/todo.html',
+            templateUrl: './states/todo/todoApp.html',
             restrict: 'E',
             controller: controller,
             scope: {
-                name: '='
+                data: '='
             }
         };
 
@@ -31,11 +31,16 @@
     controller.$inject = ['$scope', 'todos'];
     function controller($scope, todos) {
         $scope.vm = {};
+        $scope.addNewTodoList = addNewTodoList;
+        $scope.listAllTodoList = listAllTodoList;
         $scope.todos = todos;
-        $scope.addNewTodo = addNewTodo;
 
-        function addNewTodo() {
+        function addNewTodoList() {
             return todos.addList($scope.vm.name);
+        }
+    
+        function listAllTodoList() {
+            return todos.todoLists();
         }
     }
 
