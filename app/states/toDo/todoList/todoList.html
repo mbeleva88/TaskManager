@@ -1,3 +1,10 @@
 <div style="text-align:center;">
-<b>Name: {{data.name}} </b>
+	<h4><b>Name: {{data.name}} </b><h4>
+</div>
+
+<div style="text-align:center;">
+	<form name="form">
+		<input type="text" name="name" ng-model="vm.name" placeholder="Add new TODO list...">
+		<button class="button" ng-click="addNewTodoInList(data.id, vm.name)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Task</button>
+	</form>
 </div>

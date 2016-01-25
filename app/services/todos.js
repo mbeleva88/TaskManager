@@ -14,7 +14,8 @@
     function service($http) {
         return {
             todoLists: todoListArray,
-            addList: addTodoList
+            addList: addTodoList,
+            addNewTodo: addTodoInList
         };
 
         // Add TODO List
@@ -30,8 +31,7 @@
                 var todoList = {
                     id: idLists, 
                     name: name, 
-                    todos: todos,
-                    addTodo: addTodoInList
+                    todos: todos
                 };
 
                 todoListArray.push(todoList);
@@ -39,25 +39,27 @@
                 }
             }
 
-            // Add todo in TODO List
-            function addTodoInList(name) {
-                
+            // Add task in TODO List
+            function addTodoInList(id, name) {
                 if (isDuplicatedTodo(name)) {
-                alert('The todo already exists!')
+                alert('The task already exists!')
                 } else {
-                    if (todos.length > 0) {
-                    var last = _.last(todos);
-                    idTodos = last.id + 1; 
+                    var todoList = _.find(todoListArray, function(obj) { return obj.id == id; });
+
+                    if (todoList && todoList.todos.length > 0) {
+                    var todos = _.last(todoList.todos);
+                    idTodos = todoList.todos.id + 1; 
                 }
                     var todo = {
                     id: idTodos, 
                     name: name
                 };
 
-                todos.push(todo);
-                    alert('The todo has been created successfully')
+                todoList.todos.push(todo);
+                    alert('The task has been created successfully')
                 }
             }
+
 
             // Check if TODO List is duplicated
             function isDuplicatedList(name) {

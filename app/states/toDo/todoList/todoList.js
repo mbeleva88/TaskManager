@@ -21,11 +21,11 @@
     controller.$inject = ['$scope', 'todos'];
     function controller($scope, todos) {
         $scope.vm = {};
-        $scope.addNewTodo = addNewTodo;
+        $scope.addNewTodoInList = addNewTodoInList;
         $scope.todos = todos;
 
-         function addNewTodo() {
-            return todos.addTodoInList($scope.vm.name);
+         function addNewTodoInList() {
+            return todos.addNewTodo($scope.data.id, $scope.vm.name);
         }
     }
 

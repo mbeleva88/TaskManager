@@ -40,7 +40,7 @@
         }
     
         function listAllTodoList() {
-            return todos.todoLists();
+            return todos.todoLists;
         }
     }
 
