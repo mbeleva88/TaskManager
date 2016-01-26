@@ -28,20 +28,20 @@
         return directive;
     }
 
-    controller.$inject = ['$scope', 'todos'];
-    function controller($scope, todos) {
+    controller.$inject = ['$scope', 'todo'];
+    function controller($scope, todo) {
         $scope.vm = {};
         $scope.addNewTodoList = addNewTodoList;
-        $scope.listAllTodoList = listAllTodoList;
-        $scope.todos = todos;
+        $scope.listAllTodoLists = listAllTodoLists;
+        $scope.todo = todo;
 
         function addNewTodoList() {
-            return todos.addList($scope.vm.name);
+            return todo.addList($scope.vm.name);
         }
     
-        function listAllTodoList() {
-            return todos.todoLists;
-        }
+        function listAllTodoLists() {
+            return todo.todoLists;
+        } 
     }
 
 }(angular));

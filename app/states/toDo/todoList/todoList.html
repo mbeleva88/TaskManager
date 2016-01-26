@@ -8,3 +8,7 @@
 		<button class="button" ng-click="addNewTodoInList(data.id, vm.name)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Task</button>
 	</form>
 </div>
+
+<div>
+		<todo-item data="item" ng-repeat="item in listAllTodos()"></todo-item>
+</div>

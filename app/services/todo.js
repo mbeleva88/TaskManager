@@ -3,19 +3,20 @@
 
     angular
         .module('app')
-        .factory('todos', service);
+        .factory('todo', service);
 
     service.$inject = ['$http'];
 
     var idLists = 1;
     var idTodos = 1;
     var todoListArray = [];
-    var todos = [];
+    var todosArray = [];
     function service($http) {
         return {
             todoLists: todoListArray,
             addList: addTodoList,
-            addNewTodo: addTodoInList
+            addNewTodo: addTodoInList,
+            getTodosFromList: getTodos
         };
 
         // Add TODO List
@@ -31,7 +32,7 @@
                 var todoList = {
                     id: idLists, 
                     name: name, 
-                    todos: todos
+                    todos: todosArray
                 };
 
                 todoListArray.push(todoList);
@@ -40,24 +41,28 @@
             }
 
             // Add task in TODO List
-            function addTodoInList(id, name) {
-                if (isDuplicatedTodo(name)) {
+            function addTodoInList(listId, name) {
+                var list = _.find(todoListArray, function(obj) { return obj.id == listId; }); 
+                if (isDuplicatedTodo(list, name)) {
                 alert('The task already exists!')
-                } else {
-                    var todoList = _.find(todoListArray, function(obj) { return obj.id == id; });
-
-                    if (todoList && todoList.todos.length > 0) {
-                    var todos = _.last(todoList.todos);
-                    idTodos = todoList.todos.id + 1; 
+                } else {   
+                    if (list && list.todos.length > 0) {
+                    var lastTodo = _.last(list.todos);
+                    idTodos = list.lastTodo.id + 1; 
                 }
                     var todo = {
                     id: idTodos, 
                     name: name
                 };
 
-                todoList.todos.push(todo);
+                list.todos.push(todo);
                     alert('The task has been created successfully')
                 }
+            }
+
+            function getTodos(id) {
+                var list = _.find(todoListArray, function(obj) { return obj.id == id; });
+                return  list.todos;
             }
 
 
@@ -69,9 +74,9 @@
             }
 
             // Check if todo in TODO List is duplicated
-            function isDuplicatedTodo(name) {
-            return _.some(todos, function(todo) { 
-                        return todo.name == name; 
+            function isDuplicatedTodo(list, name) {
+            return _.some(list.todos, function(todo) { 
+                        return list.todo.name == name; 
                     });
             }
     }

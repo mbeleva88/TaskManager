@@ -1,12 +1,13 @@
 <div style="text-align:center;">
 	<h3><b>SIMPLE TODO LISTS</b></h3>
 <br>
-<div>
-	<todo-list data="list" ng-repeat="list in listAllTodoList()"></todo-list>
-</div>
-
-<form name="form">
-<input type="text" name="name" ng-model="vm.name" placeholder="Add new TODO list...">
-<button class="button" ng-click="addNewTodoList()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add TODO List</button>
-</form>
+	<div>
+		<todo-list data="list" ng-repeat="list in listAllTodoLists()"></todo-list>
+	</div>
+	<div>
+		<form name="form">
+			<input type="text" name="name" ng-model="vm.name" placeholder="Add new TODO list...">
+			<button class="button" ng-click="addNewTodoList()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add TODO List</button>
+		</form>
+	</div>
 </div>

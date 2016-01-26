@@ -18,14 +18,19 @@
         return directive;
     }
 
-    controller.$inject = ['$scope', 'todos'];
-    function controller($scope, todos) {
+    controller.$inject = ['$scope', 'todo'];
+    function controller($scope, todo) {
         $scope.vm = {};
         $scope.addNewTodoInList = addNewTodoInList;
-        $scope.todos = todos;
+        $scope.listAllTodos = listAllTodos;
+        $scope.todo = todo;
 
          function addNewTodoInList() {
-            return todos.addNewTodo($scope.data.id, $scope.vm.name);
+            return todo.addNewTodo($scope.data.id, $scope.vm.name);
+        }
+
+         function listAllTodos() {
+            return todo.getTodosFromList($scope.data.id);
         }
     }
 
