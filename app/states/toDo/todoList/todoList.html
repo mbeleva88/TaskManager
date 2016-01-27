@@ -1,14 +1,23 @@
-<div style="text-align:center;">
-	<h4><b>Name: {{data.name}} </b><h4>
-</div>
-
-<div style="text-align:center;">
-	<form name="form">
-		<input type="text" name="name" ng-model="vm.name" placeholder="Add new TODO list...">
-		<button class="button" ng-click="addNewTodoInList(data.id, vm.name)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Task</button>
-	</form>
-</div>
-
 <div>
-		<todo-item data="item" ng-repeat="item in listAllTodos()"></todo-item>
+	<div class="panel panel-default">
+  <div class="panel-heading"><h4><b>Name: {{data.name}} </b><h4></div>
+  <div class="panel-body">
+<div style="text-align:center;">
+<div class="row">
+  <div class="col-sm-12">
+    <div class="input-group">
+      <input type="text" class="form-control" name="name" ng-model="vm.name" placeholder="Start typing here to create a task...">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button" ng-click="addNewTodoInList(data.id, vm.name)">    Add Task</button>
+      </span>
+    </div>
+  </div>
+</div>
+</div>
+<div>
+  	<todo-item data="item" ng-repeat="item in listAllTodos()"></todo-item>
+</div>
+</div>
+</div>
+</div>
 </div>

@@ -48,7 +48,7 @@
                 } else {   
                     if (list && list.todos.length > 0) {
                     var lastTodo = _.last(list.todos);
-                    idTodos = list.lastTodo.id + 1; 
+                    idTodos = lastTodo.id + 1; 
                 }
                     var todo = {
                     id: idTodos, 
@@ -74,9 +74,9 @@
             }
 
             // Check if todo in TODO List is duplicated
-            function isDuplicatedTodo(list, name) {
+            function isDuplicatedTodo(list, todoName) {
             return _.some(list.todos, function(todo) { 
-                        return list.todo.name == name; 
+                        return todo.name == todoName; 
                     });
             }
     }
