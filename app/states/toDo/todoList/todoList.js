@@ -22,15 +22,23 @@
     function controller($scope, todo) {
         $scope.vm = {};
         $scope.addNewTodoInList = addNewTodoInList;
-        $scope.listAllTodos = listAllTodos;
         $scope.todo = todo;
+        $scope.vm.editMode = false;
+        $scope.editTodoList = editTodoList;
+        $scope.saveTodoList = saveTodoList;
+
 
          function addNewTodoInList() {
-            return todo.addNewTodo($scope.data.id, $scope.vm.name);
+            todo.addNewTodo($scope.data.id, $scope.vm.name);
+            $scope.vm.name = '';
         }
 
-         function listAllTodos() {
-            return todo.getTodosFromList($scope.data.id);
+        function editTodoList() {
+            $scope.vm.editMode = true;
+        }
+
+        function saveTodoList() {
+            $scope.vm.editMode = false;
         }
     }
 

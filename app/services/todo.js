@@ -10,19 +10,20 @@
     var idLists = 1;
     var idTodos = 1;
     var todoListArray = [];
-    var todosArray = [];
     function service($http) {
         return {
             todoLists: todoListArray,
             addList: addTodoList,
             addNewTodo: addTodoInList,
-            getTodosFromList: getTodos
+            removeById: removeById
         };
 
         // Add TODO List
         function addTodoList(name) {
             if (isDuplicatedList(name)) {
                 alert('The list already exists!')
+            } else if (name == "") {
+                alert('The list name cannot be empty!')
             } else {
                 if (todoListArray.length > 0) {
                     var last = _.last(todoListArray);
@@ -32,20 +33,23 @@
                 var todoList = {
                     id: idLists, 
                     name: name, 
-                    todos: todosArray
+                    todos: []
                 };
 
                 todoListArray.push(todoList);
-                    alert('The list has been created successfully')
                 }
             }
 
             // Add task in TODO List
             function addTodoInList(listId, name) {
-                var list = _.find(todoListArray, function(obj) { return obj.id == listId; }); 
+                var list = _.find(todoListArray, function(obj) { 
+                    return obj.id == listId; }); 
+
                 if (isDuplicatedTodo(list, name)) {
                 alert('The task already exists!')
-                } else {   
+                } else if (name == "") {
+                alert('The task name cannot be empty!') 
+                }else {   
                     if (list && list.todos.length > 0) {
                     var lastTodo = _.last(list.todos);
                     idTodos = lastTodo.id + 1; 
@@ -56,15 +60,8 @@
                 };
 
                 list.todos.push(todo);
-                    alert('The task has been created successfully')
                 }
             }
-
-            function getTodos(id) {
-                var list = _.find(todoListArray, function(obj) { return obj.id == id; });
-                return  list.todos;
-            }
-
 
             // Check if TODO List is duplicated
             function isDuplicatedList(name) {
@@ -78,6 +75,14 @@
             return _.some(list.todos, function(todo) { 
                         return todo.name == todoName; 
                     });
+            }
+
+            function removeById(list, id) {
+                var index = _.findIndex(list, function(obj) { 
+                    return obj.id == id; 
+                });
+
+                list.splice(index, 1);
             }
     }
 }(angular));

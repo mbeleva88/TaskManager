@@ -11,7 +11,8 @@
             restrict: 'E',
             controller: controller,
             scope: {
-                data: '='
+                data: '=',
+                list: '='
             }
         };
 
@@ -22,6 +23,10 @@
     function controller($scope, todo) {
         $scope.vm = {};
         $scope.todo = todo;
+
+        function removeTodoFromList() {
+            todo.removeListById($scope.list, $scope.data.id);
+        }
     }
 
 }(angular));

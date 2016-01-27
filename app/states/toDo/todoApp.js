@@ -37,11 +37,21 @@
         $scope.todo = todo;
 
         function addNewTodoList() {
-            return todo.addList($scope.vm.name);
+            todo.addList($scope.vm.name);
+            $scope.vm.name = '';
         }
 
         function addNewTodoListTEST() {
-            return todo.addList($scope.vm.name);
+             prompt({
+                title: 'Give me a name',
+                message: 'What would you like to name it?',
+                input: true,
+                label: 'Name',
+                value: ''
+             }).then(function(name) {
+                todo.addList(name);
+                name = '';
+             }); 
         }
     
         function listAllTodoLists() {
