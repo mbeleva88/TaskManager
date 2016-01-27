@@ -28,14 +28,19 @@
         return directive;
     }
 
-    controller.$inject = ['$scope', 'todo'];
-    function controller($scope, todo) {
+    controller.$inject = ['$scope', 'todo', 'prompt'];
+    function controller($scope, todo, prompt) {
         $scope.vm = {};
         $scope.addNewTodoList = addNewTodoList;
+        $scope.addNewTodoListTEST = addNewTodoListTEST;
         $scope.listAllTodoLists = listAllTodoLists;
         $scope.todo = todo;
 
         function addNewTodoList() {
+            return todo.addList($scope.vm.name);
+        }
+
+        function addNewTodoListTEST() {
             return todo.addList($scope.vm.name);
         }
     
