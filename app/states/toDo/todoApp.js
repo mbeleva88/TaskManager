@@ -32,19 +32,12 @@
     function controller($scope, todo, prompt) {
         $scope.vm = {};
         $scope.addNewTodoList = addNewTodoList;
-        $scope.addNewTodoListTEST = addNewTodoListTEST;
-        $scope.listAllTodoLists = listAllTodoLists;
         $scope.todo = todo;
 
         function addNewTodoList() {
-            todo.addList($scope.vm.name);
-            $scope.vm.name = '';
-        }
-
-        function addNewTodoListTEST() {
              prompt({
-                title: 'Give me a name',
-                message: 'What would you like to name it?',
+                title: 'Add new TODO List',
+                message: 'Please enter a TODO list name',
                 input: true,
                 label: 'Name',
                 value: ''
@@ -52,11 +45,7 @@
                 todo.addList(name);
                 name = '';
              }); 
-        }
-    
-        function listAllTodoLists() {
-            return todo.todoLists;
-        } 
+        }   
     }
 
 }(angular));

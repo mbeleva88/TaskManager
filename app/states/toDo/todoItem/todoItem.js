@@ -23,9 +23,16 @@
     function controller($scope, todo) {
         $scope.vm = {};
         $scope.todo = todo;
+        $scope.vm.editMode = false;
+        $scope.editTodo = editTodo;
+        $scope.saveTodo = saveTodo;
 
-        function removeTodoFromList() {
-            todo.removeListById($scope.list, $scope.data.id);
+        function editTodo() {
+            $scope.vm.editMode = true;
+        }
+
+        function saveTodo() {
+            $scope.vm.editMode = false;
         }
     }
 
