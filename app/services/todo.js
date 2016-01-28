@@ -42,7 +42,7 @@
 
         // Add task in TODO List
         function addTodoInList(listId, name) {
-            if (name == "") {
+            if (!name || name == "") {
                 alert('The task name cannot be empty!') 
             } else {
             var list = _.find(todoListArray, function(obj) { 
