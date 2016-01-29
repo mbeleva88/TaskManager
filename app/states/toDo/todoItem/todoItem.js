@@ -25,7 +25,7 @@
         $scope.todo = todo;
         $scope.vm.editMode = false;
         $scope.editTodo = editTodo;
-        $scope.saveTodo = saveTodo;
+        $scope.saveTodo = saveTodo;     
 
         function editTodo() {
             $scope.vm.editMode = true;

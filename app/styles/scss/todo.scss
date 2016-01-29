@@ -1,3 +1,8 @@
+.custom-image {
+background-image: url("/assets/images/background.jpg");
+}
+
+
 .add-button {
     background-color: #4d7db8;
     color: white;
@@ -16,19 +21,24 @@
     text-align: center;
 }
 
-.green-custom {
-    background-color: #70a789;
-}
-
 .custom-header {
-    font-size:18px;
+    font-weight: bold;
+    font-size: 18px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .custom-input-font {
     color: black;
-    font-size:18px;
+    font-size: 18px;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.grey-font {
+    color: #8c8c8c;
+}
+
+.white-font {
+    color: white;
 }
 
 .custom-input {
@@ -40,9 +50,9 @@
 
 .transparent-btn {
     background-color: transparent;
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
     border: none;
-    cursor:pointer;
+    cursor: pointer;
     overflow: hidden;
 }
 
@@ -58,4 +68,32 @@
 
 .custom-table {
     margin: 0 !important;
+    colour: white !important;
+}
+
+.show-row button {
+    display: none;
+}
+
+.show-row:hover button {
+    display: inline; 
+}
+
+.strike {
+   text-decoration: line-through;
+}
+
+ .custom-panel {
+    margin-bottom: 40px !important;
+}
+
+.custom-yellow {
+    background-color: #ffff80 !important;
+}
+
+.custom-plus {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 4px;
+    color: green;
 }

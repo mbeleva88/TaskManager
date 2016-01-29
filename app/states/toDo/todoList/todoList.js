@@ -26,7 +26,7 @@
         $scope.vm.editMode = false;
         $scope.editTodoList = editTodoList;
         $scope.saveTodoList = saveTodoList;
-
+        $scope.done = true;
 
          function addNewTodoInList() {
             todo.addNewTodo($scope.data.id, $scope.vm.name);
